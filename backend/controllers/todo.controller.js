@@ -14,6 +14,29 @@ module.exports.saveTodo=async(req,res)=>{
         .then((data)=>{
             console.log(`Added Succesfully`);
             console.log(data);
-            req.send(data);
+            res.send(data);
         })
 }
+
+
+module.exports.updateTodo=(async(req,res)=>{
+    const {_id,text}=req.body
+    todoModel
+    .findByIdAndUpdate(_id,{text})
+    .then(()=>res.send(`Updated Successfully...`))
+    .catch((err)=>{
+        console.log(err);
+    })
+})
+
+module.exports.deleteTodo=(async(req,res)=>{
+    const{_id}=req.body
+    todoModel
+    .findByIdAndDelete(_id)
+    .then(()=>{
+        res.send(`Deleted Successfully....`)
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+})
