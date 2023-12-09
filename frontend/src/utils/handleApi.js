@@ -22,4 +22,23 @@ const addTodo=(text,setText,setTodo)=>{
 }
 
 
-export {getAllTodo,addTodo}
+const updateTodo=(todoId,text,setTodo,setText,setIsUpdating)=>{
+    axios
+    .post(`${baseURL}/update`,{_id:todoId,text})
+    .then((data)=>{
+        console.log(data);
+        setText("")
+        getAllTodo(setTodo)
+    })
+}
+
+const deleteTodo=(_id,setTodo)=>{
+    axios
+    .post(`${baseURL}/delete`,{_id})
+    .then((data)=>{
+        getAllTodo(setTodo)
+    })
+}
+
+
+export {getAllTodo,addTodo,updateTodo,deleteTodo}
