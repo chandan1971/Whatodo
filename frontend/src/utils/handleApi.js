@@ -29,6 +29,7 @@ const updateTodo=(todoId,text,setTodo,setText,setIsUpdating)=>{
         console.log(data);
         setText("")
         getAllTodo(setTodo)
+        setIsUpdating(false)
     })
 }
 
